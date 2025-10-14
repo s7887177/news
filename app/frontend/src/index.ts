@@ -1,11 +1,22 @@
+/// <reference types="vite/client" />
+interface ImportMetaEnv {
+    readonly DEV: boolean
+    readonly PROD: boolean
+    readonly MODE: string
+    // Add other env variables you use
+}
+interface ImportMeta {
+    readonly env: ImportMetaEnv
+}
+
 import markdownit from 'markdown-it';
-import env from './env';
 type Blog = {
     date: string,
     name: string,
     title?: string,
     file?: string,
 }
+const backendUrl = import.meta.env.VITE_BACKEND ?? `${window.location.protocol}//${window.location.host}`;
 
 const md = markdownit();
 const contentElement = document.querySelector('#md-content');
@@ -25,7 +36,7 @@ async function renderMarkdown(markdownText: string, blogBasePath: string): Promi
 
 
 export function setContent(blog: Blog) {
-    const blogEntryPath = new URL(`/blogs/${blog.date}/${blog.name}`, env.HOST).toString();
+    const blogEntryPath = new URL(`/blogs/${blog.date}/${blog.name}`, backendUrl).toString();
     const markdownUrl = `${blogEntryPath}/index.md`;
     fetch(markdownUrl)
         .then(res => res.text())
@@ -37,7 +48,7 @@ export function setContent(blog: Blog) {
 }
 
 
-fetch(new URL('/blogs', env.HOST))
+fetch(new URL('/blogs', backendUrl))
     .then(res => res.json())
     .then((data: Blog[]) => {
         const container = document.getElementById('article-list');
@@ -63,7 +74,7 @@ fetch(new URL('/blogs', env.HOST))
             const li = document.createElement('li');
             li.className = 'pl-4';
             const button = document.createElement('button');
-            button.className='whitespace-nowrap overflow-hidden max-w-full overflow-ellipsis';
+            button.className = 'whitespace-nowrap overflow-hidden max-w-full overflow-ellipsis';
             button.textContent = blog.title!;
             button.onclick = () => setContent(blog);
             li.append(button);
