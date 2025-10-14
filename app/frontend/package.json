@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "tailwindcss": "^4.1.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/markdown-it": "^14.1.2",
+    "vite": "^7.1.9"
+  },
+  "scripts": {
+    "dev": "vite"
+  }
+}
