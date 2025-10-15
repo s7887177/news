@@ -1,5 +1,5 @@
 # Next.js 16 Beta: Turbopack Takes the Wheel, React 19.2 Joins the Ride
-
+![cover]
 ## The Next.js 16 Shift
 
 Next.js 16 Beta just dropped, and with it comes a quiet but massive architectural shift — **Turbopack** is now the default bundler, React 19.2 is fully supported, and the long-awaited **React Compiler** finally arrives in a stable form.
@@ -84,6 +84,4 @@ The focus is no longer *just* about rendering faster pages — it’s about **ti
 If Webpack was the age of configuration, and Vite was the age of speed,
 then **Turbopack is the age of seamlessness** — where the build system finally becomes invisible.
 
----
-
-Would you like me to generate a **Medium-style 16:9 cover image** (with title and clean design, no text cropped) to go with this article? I can also suggest a short SEO-friendly description and keywords.
+[cover]: ./cover.png
